@@ -53,33 +53,6 @@ This repository provides the frontend needed to interact with that system.
 
 Additional libraries may be added as the frontend evolves.
 
----
-
-## Project Structure
-
-A simplified version of the project structure looks like this:
-
-```text
-promptcanvas-frontend/
-│
-├── public/
-│
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── hooks/
-│   ├── services/
-│   ├── lib/
-│   ├── App.tsx
-│   └── main.tsx
-│
-├── .gitignore
-├── package.json
-├── package-lock.json
-├── tsconfig.json
-├── vite.config.ts
-└── README.md
-```
 
 ---
 
@@ -141,29 +114,8 @@ A local `node_modules` directory will be created automatically.
 
 ---
 
-### Step 4 — Configure Environment Variables
 
-Create a `.env` file in the root of the project.
-
-Example:
-
-```env
-VITE_API_BASE_URL=http://localhost:8080
-```
-
-This tells the frontend where the PromptCanvas backend is running.
-
-Do not commit the `.env` file to GitHub.
-
-You can use a `.env.example` file to document the required environment variables:
-
-```env
-VITE_API_BASE_URL=http://localhost:8080
-```
-
----
-
-### Step 5 — Start the PromptCanvas Backend
+### Step 4 — Start the PromptCanvas Backend
 
 The frontend depends on the PromptCanvas Spring Boot backend for authentication, projects, AI generation, project files, billing, and other functionality.
 
@@ -183,7 +135,7 @@ http://localhost:8080
 
 ---
 
-### Step 6 — Start the Frontend
+### Step 5 — Start the Frontend
 
 From inside the `promptcanvas-frontend` folder, run:
 
@@ -232,20 +184,6 @@ Then open:
 ```text
 http://localhost:5173
 ```
-
----
-
-## Environment Variables
-
-Example `.env` file:
-
-```env
-VITE_API_BASE_URL=http://localhost:8080
-```
-
-The required environment variables may change as more services are integrated.
-
-Do not commit secrets or private configuration values.
 
 ---
 
