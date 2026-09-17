@@ -1,73 +1,304 @@
-# Welcome to your Lovable project
+# PromptCanvas Frontend
 
-## Project info
+Frontend client for [PromptCanvas](https://github.com/dev-aryank/promptcanvas), an AI-powered application builder.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**Main backend repository:**  
+https://github.com/dev-aryank/promptcanvas
 
-## How can I edit this code?
+This repository contains the user-facing interface for PromptCanvas, including authentication, project management, AI chat, generated file exploration, and live application previews.
 
-There are several ways of editing your application.
+The initial frontend implementation was generated with the help of an LLM and is being adapted and integrated with the PromptCanvas backend.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## What is PromptCanvas?
 
-Changes made via Lovable will be committed automatically to this repo.
+PromptCanvas is an AI-powered application builder where users can describe an application in natural language and continue modifying it through conversation.
 
-**Use your preferred IDE**
+The basic idea is:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```text
+Describe an application
+        ↓
+AI generates the code
+        ↓
+Application runs
+        ↓
+Live preview is shown
+        ↓
+Ask for changes through chat
+        ↓
+AI modifies the existing project
+        ↓
+Preview updates
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The main engineering focus of the project is the Spring Boot backend, which handles AI generation, project context, tool calling, file storage, chat history, authentication, billing, and the execution layer.
 
-Follow these steps:
+This repository provides the frontend needed to interact with that system.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Tech Stack
 
-# Step 3: Install the necessary dependencies.
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- TanStack Query
+- React Hook Form
+- Zod
+- Lucide React
+
+Additional libraries may be added as the frontend evolves.
+
+---
+
+## Project Structure
+
+A simplified version of the project structure looks like this:
+
+```text
+promptcanvas-frontend/
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── services/
+│   ├── lib/
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
+```
+
+---
+
+## Running the Frontend Locally
+
+### Prerequisites
+
+Before starting, make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/)
+- npm
+- Git
+
+You can verify your installations using:
+
+```bash
+node --version
+npm --version
+git --version
+```
+
+---
+
+### Step 1 — Clone the Repository
+
+Open a terminal and clone the frontend repository:
+
+```bash
+git clone https://github.com/dev-aryank/promptcanvas-frontend.git
+```
+
+---
+
+### Step 2 — Move Into the Project Folder
+
+```bash
+cd promptcanvas-frontend
+```
+
+---
+
+### Step 3 — Install Dependencies
+
+Run:
+
+```bash
+npm install
+```
+
+or:
+
+```bash
 npm i
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+This installs all dependencies listed in `package.json`.
+
+A local `node_modules` directory will be created automatically.
+
+---
+
+### Step 4 — Configure Environment Variables
+
+Create a `.env` file in the root of the project.
+
+Example:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+This tells the frontend where the PromptCanvas backend is running.
+
+Do not commit the `.env` file to GitHub.
+
+You can use a `.env.example` file to document the required environment variables:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+---
+
+### Step 5 — Start the PromptCanvas Backend
+
+The frontend depends on the PromptCanvas Spring Boot backend for authentication, projects, AI generation, project files, billing, and other functionality.
+
+Clone the backend repository separately:
+
+```bash
+git clone https://github.com/dev-aryank/promptcanvas.git
+```
+
+Then follow the setup instructions available in the backend repository.
+
+By default, the backend should be available at:
+
+```text
+http://localhost:8080
+```
+
+---
+
+### Step 6 — Start the Frontend
+
+From inside the `promptcanvas-frontend` folder, run:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Vite should start the development server.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+You should see output similar to:
 
-**Use GitHub Codespaces**
+```text
+VITE ready
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Local: http://localhost:5173/
+```
 
-## What technologies are used for this project?
+Open:
 
-This project is built with:
+```text
+http://localhost:5173
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+in your browser.
 
-## How can I deploy this project?
+The PromptCanvas frontend should now be running locally.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## Quick Start
 
-Yes, you can!
+If you already have Node.js installed and the PromptCanvas backend is running, the setup is simply:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+git clone https://github.com/dev-aryank/promptcanvas-frontend.git
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+cd promptcanvas-frontend
+
+npm install
+
+npm run dev
+```
+
+Then open:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Environment Variables
+
+Example `.env` file:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+The required environment variables may change as more services are integrated.
+
+Do not commit secrets or private configuration values.
+
+---
+
+## Backend Requirement
+
+This frontend is designed to work with the main PromptCanvas backend.
+
+Backend repository:
+
+https://github.com/dev-aryank/promptcanvas
+
+The backend handles the core platform functionality, including:
+
+- JWT authentication
+- Project management
+- Project permissions
+- Stripe subscriptions
+- Project file storage using MinIO
+- AI generation using Spring AI
+- OpenRouter + GPT-5.3 Codex
+- Tool calling
+- Project-aware context
+- Server-Sent Events
+- Chat history
+- Generated file persistence
+- Kubernetes-based execution and live preview infrastructure
+
+---
+
+## Development Flow
+
+The intended application flow is:
+
+```text
+Frontend
+   ↓
+User sends prompt
+   ↓
+Spring Boot backend
+   ↓
+AI understands the current project
+   ↓
+AI reads required files
+   ↓
+AI generates updated files
+   ↓
+Response is streamed through SSE
+   ↓
+Frontend displays progress
+   ↓
+Generated files are updated
+   ↓
+Application reruns
+   ↓
+Live preview updates
+```
