@@ -6,7 +6,7 @@ export interface LoginCredentials {
 export interface LoginResponse {
   token: string;
   projectId: string;
-  user?: {
+  userProfileResponse?: {
     id: number;
     username: string;
     name: string;
@@ -99,7 +99,7 @@ export interface SignupRequest {
 
 export interface AuthResponse {
   token: string;
-  user: {
+  userProfileResponse: {
     id: number;
     username: string;
     name: string;

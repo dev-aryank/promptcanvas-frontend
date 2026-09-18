@@ -32,7 +32,7 @@ export default function Signup() {
         try {
             const response = await api.signup({ name, username: email, password });
             setAuthToken(response.token);
-            setUserInfo(response.user);
+            setUserInfo(response.userProfileResponse);
             toast({
                 title: "Welcome!",
                 description: "Account created successfully",

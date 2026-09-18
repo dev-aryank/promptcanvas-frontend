@@ -31,8 +31,8 @@ export function LoginModal() {
     try {
       const response = await api.login({ username: email, password });
       setAuthToken(response.token);
-      if (response.user) {
-        setUserInfo(response.user);
+      if (response.userProfileResponse) {
+        setUserInfo(response.userProfileResponse);
       }
       toast({
         title: "Welcome back!",
